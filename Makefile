@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/18 23:30:17 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/19 00:04:15 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ MLX_DIR		= minilibx_linux
 endif
 
 TMP_C		=\
+			 rt_v1_init.c\
 			 main.c
 SRC_C		= $(TMP_C:%=src/%)
 

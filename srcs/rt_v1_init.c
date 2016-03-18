@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_v1.h                                            :+:      :+:    :+:   */
+/*   rt_v1_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 00:03:42 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/18 23:34:34 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/19 00:02:24 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_V1_H
-# define RT_V1_H
+#include "rt_v1.h"
 
-# include <mlx.h>
-
-# include "libft.h"
-# include "get_next_line.h"
-# include "libcolor.h"
-
-# define WID 800
-# define HEI 600
-
-# define SPHERE 0
-# define PLAN 1
-# define CYLINDER 2
-# define CONE 3
-
-typedef struct	s_env
+t_env	*rt_v1_init(char *file)
 {
-	char	*file;
-}				t_env;
+	t_env	*new;
 
-t_env			*rt_v1_init(char *file);
-
-#endif
+	if (!(new = (t_env*)malloc(sizeof(t_env))))
+		return (NULL);
+	new->file = file;
+	return (new);
+}
