@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rt_v1_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 06:54:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 00:56:19 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/19 00:52:37 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/19 00:57:09 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
 
-int	main(int ac, char **av)
+void	rt_v1_exit(t_env **env)
 {
-	t_env	*env;
-
-	if (ac == 2)
+	if (*env)
 	{
-		if (!(env = rt_v1_init(av[1])))
-			return (0);
+		free(*env);
+		*env = NULL;
 	}
-	rt_v1_exit(&env);
-	return (0);
+	ft_putendl("Exiting, good bye <3 !");
+	exit(0);
 }

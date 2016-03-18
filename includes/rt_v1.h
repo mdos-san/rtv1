@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 00:46:24 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 00:54:51 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_env
 }				t_env;
 
 t_env			*rt_v1_init(char *file);
+void			rt_v1_exit(t_env **env);
 void			rt_v1_get_info(t_env *env);
 
 #endif
