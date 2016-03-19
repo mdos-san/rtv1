@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 07:25:40 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 07:30:49 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ typedef struct		s_vec
 	double			y;
 	double			z;
 }					t_vec;
+
+typedef struct		s_ray
+{
+	double			x;
+	double			y;
+	double			z;
+	t_vec			v;
+}					t_ray;
 
 typedef struct		s_cam
 {
