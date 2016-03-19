@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 06:54:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 03:10:10 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 04:37:36 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int ac, char **av)
 			return (0);
 		(parse(env) == 1) ? 0 : rt_v1_exit(&env, "Error in parsing :'( !");
 		rt_v1_get_info(env);
+		rt_mlx_init(env);
+		mlx_loop(env->mlx);
 		rt_v1_exit(&env, "Exiting, Good Bye <3 !");
 	}
 	rt_v1_exit(&env, "Error, check args :'( !");

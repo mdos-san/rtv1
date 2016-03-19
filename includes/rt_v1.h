@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 04:20:24 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 04:38:24 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct		s_obj
 	struct s_obj	*next;
 }					t_obj;
 
-typedef struct		s_img;
+typedef struct		s_img
 {
 	void			*ptr;
 	int				wid;
@@ -82,5 +82,6 @@ void				rt_v1_exit(t_env **env, char *str);
 void				rt_v1_get_info(t_env *env);
 int					parse(t_env *env);
 int					obj_add(t_obj **obj);
+void				rt_mlx_init(t_env *env);
 
 #endif
