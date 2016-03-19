@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_v1_init.c                                       :+:      :+:    :+:   */
+/*   obj_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 23:34:34 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 02:13:07 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/19 02:13:54 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/19 02:19:59 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
 
-t_env	*rt_v1_init(char *file)
+int	obj_add(t_obj **obj)
 {
-	t_env	*new;
-
-	if (!(new = (t_env*)malloc(sizeof(t_env))))
-		return (NULL);
-	new->file = file;
-	new->fd = 0;
-	new->obj = NULL;
-	new->cur = NULL;
-	rt_v1_get_info(new);
-	(parse(new) == 1) ? 0 : rt_v1_exit(&new, "Error in parsing :'( !");
-	return (new);
+	if (*obj == NULL)
+	{
+		if (!(*obj = (t_obj*)malloc(sizeof(t_obj))))
+			return (0);
+		(*obj)->type = -1;
+		(*obj)->x = 0;
+		(*obj)->y = 0;
+		(*obj)->z = 0;
+		return (1);
+	}
+	else
+		return(obj_add(&(*obj)->next));
 }
