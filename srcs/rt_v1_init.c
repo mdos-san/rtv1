@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 23:34:34 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 07:26:29 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 07:51:56 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	init_cam(t_env *env)
 {
-	env->cam.x = 0;
-	env->cam.y = -100;
-	env->cam.z = 0;
+	env->cam.o.x = 0;
+	env->cam.o.y = -100;
+	env->cam.o.z = 0;
 	env->cam.vx.x = 1;
 	env->cam.vx.y = 0;
 	env->cam.vx.z = 0;

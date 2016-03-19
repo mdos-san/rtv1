@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pnt_translate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 06:54:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 08:07:31 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/19 07:48:59 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/19 07:50:15 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
 
-int	main(int ac, char **av)
+void	pnt_translate(t_pnt	*pnt, t_vec vec, double coef)
 {
-	t_env	*env;
-
-	if (ac == 2)
-	{
-		if (!(env = rt_v1_init(av[1])))
-			return (0);
-		(parse(env) == 1) ? 0 : rt_v1_exit(&env, "Error in parsing :'( !");
-		rt_v1_get_info(env);
-		rt_mlx_init(env);
-		render_loop(env);
-		mlx_loop(env->mlx);
-		rt_v1_exit(&env, "Exiting, Good Bye <3 !");
-	}
-	rt_v1_exit(&env, "Error, check args :'( !");
-	return (0);
+	pnt->x += vec.x * coef;
+	pnt->y += vec.y * coef;
+	pnt->z += vec.z * coef;
 }

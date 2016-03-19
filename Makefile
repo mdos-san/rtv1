@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/19 04:37:58 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/19 08:06:26 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ TMP_C		=\
 			 parse.c\
 			 obj_add.c\
 			 rt_mlx_init.c\
+			 pnt_translate.c\
+			 render_loop.c\
 			 main.c
 SRC_C		= $(TMP_C:%=src/%)
 
