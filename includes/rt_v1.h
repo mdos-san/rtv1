@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 09:14:24 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 09:24:21 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ void				rt_mlx_init(t_env *env);
 void				pnt_translate(t_pnt	*pnt, t_vec vec, double coef);
 void				render_loop(t_env *env);
 int					sphere_colision(env, sph);
+void				img_pixel_put(t_img *img, int x, int y, t_color col);
 
 #endif
