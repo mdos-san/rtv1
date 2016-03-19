@@ -6,19 +6,19 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 00:52:37 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 00:57:09 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 01:06:14 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
 
-void	rt_v1_exit(t_env **env)
+void	rt_v1_exit(t_env **env, char *str)
 {
 	if (*env)
 	{
 		free(*env);
 		*env = NULL;
 	}
-	ft_putendl("Exiting, good bye <3 !");
+	ft_putendl(str);
 	exit(0);
 }
