@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 04:18:15 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 04:20:24 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ typedef struct		s_img;
 
 typedef struct		s_env
 {
+	void			*mlx;
+	void			*win;
+	t_img			img;
 	char			debug;
 	char			*file;
 	int				fd;
