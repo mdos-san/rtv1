@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 08:25:42 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 09:14:24 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 # define WID 800
 # define HEI 600
+
+# define RAYON 25
 
 # define P_WID (WID / 10)
 # define P_HEI (HEI / 10)
@@ -50,6 +52,7 @@ typedef struct		s_ray
 {
 	t_pnt			o;
 	t_vec			v;
+	double			dist;
 }					t_ray;
 
 typedef struct		s_cam
@@ -86,6 +89,7 @@ typedef struct		s_env
 	void			*mlx;
 	void			*win;
 	t_img			img;
+	t_color			col;
 	char			debug;
 	char			*file;
 	int				fd;
@@ -93,6 +97,7 @@ typedef struct		s_env
 	t_ray			ray;
 	t_obj			*obj;
 	t_obj			*cur;
+	int				(*ft_ptr[1])(t_env *, t_obj)
 }					t_env;
 
 t_env				*rt_v1_init(char *file);
@@ -103,5 +108,6 @@ int					obj_add(t_obj **obj);
 void				rt_mlx_init(t_env *env);
 void				pnt_translate(t_pnt	*pnt, t_vec vec, double coef);
 void				render_loop(t_env *env);
+int					sphere_colision(env, sph);
 
 #endif
