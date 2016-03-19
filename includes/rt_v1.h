@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 09:24:21 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 10:29:08 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <fcntl.h>
+# include <math.h>
 # include <mlx.h>
 
 # include "libft.h"
@@ -25,6 +26,8 @@
 # define HEI 600
 
 # define RAYON 25
+
+# define STEP 100000
 
 # define P_WID (WID / 10)
 # define P_HEI (HEI / 10)
@@ -97,7 +100,7 @@ typedef struct		s_env
 	t_ray			ray;
 	t_obj			*obj;
 	t_obj			*cur;
-	int				(*ft_ptr[1])(t_env *, t_obj)
+	int				(*ft_ptr[1])(struct s_env *, t_obj);
 }					t_env;
 
 t_env				*rt_v1_init(char *file);
@@ -108,7 +111,8 @@ int					obj_add(t_obj **obj);
 void				rt_mlx_init(t_env *env);
 void				pnt_translate(t_pnt	*pnt, t_vec vec, double coef);
 void				render_loop(t_env *env);
-int					sphere_colision(env, sph);
+int					sphere_colision(t_env *env, t_obj sph);
+void				check_colision(t_env *env);
 void				img_pixel_put(t_img *img, int x, int y, t_color col);
 
 #endif

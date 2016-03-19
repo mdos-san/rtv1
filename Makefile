@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/19 09:25:06 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/19 09:32:18 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ TMP_C		=\
 			 pnt_translate.c\
 			 render_loop.c\
 			 img_pixel_put.c\
+			 check_colision.c\
 			 main.c
 SRC_C		= $(TMP_C:%=src/%)
 

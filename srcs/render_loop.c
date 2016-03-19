@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 07:42:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 08:24:52 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 10:28:58 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ static void	init_pnt(t_env *env, t_pnt *cur)
 static void	init_ray(t_env *env, t_pnt cur)
 {
 	env->ray.o = env->cam.o;
+	pnt_translate(&env->ray.o, env->cam.vy, STEP);
 	env->ray.v.x = cur.x - env->ray.o.x;
 	env->ray.v.y = cur.y - env->ray.o.y;
 	env->ray.v.z = cur.z - env->ray.o.z;
+	env->ray.dist = -1;
 }
 
 void		render_loop(t_env *env)
@@ -36,8 +38,8 @@ void		render_loop(t_env *env)
 	int		x;
 	int		y;
 
-	w_coef = P_WID / WID;
-	h_coef = P_HEI / HEI;
+	w_coef = (double)P_WID / (double)WID;
+	h_coef = (double)P_HEI / (double)HEI;
 	init_pnt(env, &cur);
 	y = 0;
 	while (y < HEI)
@@ -46,6 +48,8 @@ void		render_loop(t_env *env)
 		while (x < WID)
 		{
 			init_ray(env, cur);
+			check_colision(env);
+			(env->ray.dist != -1) ? img_pixel_put(&env->img, x, y, env->col) : 0;
 			pnt_translate(&cur, env->cam.vx, w_coef);
 			++x;
 		}
