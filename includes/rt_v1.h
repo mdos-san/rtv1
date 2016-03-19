@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 08:05:01 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 08:25:42 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ typedef struct		s_vec
 
 typedef struct		s_ray
 {
-	double			x;
-	double			y;
-	double			z;
+	t_pnt			o;
 	t_vec			v;
 }					t_ray;
 
@@ -68,6 +66,7 @@ typedef struct		s_obj
 	double			x;
 	double			y;
 	double			z;
+	t_color			col;
 	struct s_obj	*next;
 }					t_obj;
 
@@ -91,6 +90,7 @@ typedef struct		s_env
 	char			*file;
 	int				fd;
 	t_cam			cam;
+	t_ray			ray;
 	t_obj			*obj;
 	t_obj			*cur;
 }					t_env;

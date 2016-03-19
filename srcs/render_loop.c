@@ -6,13 +6,29 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 07:42:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 08:05:52 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 08:24:52 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
 
-void	render_loop(t_env *env)
+static void	init_pnt(t_env *env, t_pnt *cur)
+{
+	*cur = env->cam.o;
+	pnt_translate(cur, env->cam.vy, 10);
+	pnt_translate(cur, env->cam.vx, -(P_WID / 2));
+	pnt_translate(cur, env->cam.vz, P_HEI / 2);
+}
+
+static void	init_ray(t_env *env, t_pnt cur)
+{
+	env->ray.o = env->cam.o;
+	env->ray.v.x = cur.x - env->ray.o.x;
+	env->ray.v.y = cur.y - env->ray.o.y;
+	env->ray.v.z = cur.z - env->ray.o.z;
+}
+
+void		render_loop(t_env *env)
 {
 	t_pnt	cur;
 	double	w_coef;
@@ -20,18 +36,16 @@ void	render_loop(t_env *env)
 	int		x;
 	int		y;
 
-	cur = env->cam.o;
-	w_coef = P_WID /WID;
+	w_coef = P_WID / WID;
 	h_coef = P_HEI / HEI;
-	pnt_translate(&cur, env->cam.vy, 10);
-	pnt_translate(&cur, env->cam.vx, -(P_WID / 2));
-	pnt_translate(&cur, env->cam.vz, P_HEI / 2);
+	init_pnt(env, &cur);
 	y = 0;
 	while (y < HEI)
 	{
 		x = 0;
 		while (x < WID)
 		{
+			init_ray(env, cur);
 			pnt_translate(&cur, env->cam.vx, w_coef);
 			++x;
 		}
