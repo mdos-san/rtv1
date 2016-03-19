@@ -17,7 +17,8 @@ t_list	*ft_lstnew_cpy(void const *content, size_t content_size)
 {
 	t_list	*new;
 
-	new = (t_list*)malloc(sizeof(t_list));
+	if (!(new = (t_list*)malloc(sizeof(t_list))))
+		return (NULL);
 	new->content = (void*)content;
 	new->content_size = content_size;
 	return (new);

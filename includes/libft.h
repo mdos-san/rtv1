@@ -6,13 +6,14 @@
 /*   By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:52:57 by mdos-san          #+#    #+#             */
-/*   Updated: 2015/12/01 11:16:14 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/01/23 10:15:50 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# define BUFF_SIZE 1024
 
 typedef struct		s_list
 {
@@ -72,6 +73,7 @@ void				ft_putendl_fd(char const *s, int fd);
 char				**ft_strsplit(char const *s, char c);
 void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_putnbrl(int nbr);
 char				*ft_itoa(int n);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
@@ -80,5 +82,6 @@ void				ft_lstadd(t_list **lst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew_cpy(void const *content, size_t content_size);
+int					get_next_line(int fd, char **line);
 
 #endif
