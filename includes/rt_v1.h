@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 03:38:34 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 04:07:37 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,21 @@
 # define CYL 2
 # define CON 3
 
+typedef struct		s_vec
+{
+	double			x;
+	double			y;
+	double			z;
+}					t_vec;
+
+typedef struct		s_cam
+{
+	double			x;
+	double			y;
+	double			z;
+	t_vec			dir;
+}					t_cam;
+
 typedef struct		s_obj
 {
 	char			type;
@@ -43,6 +58,7 @@ typedef struct		s_env
 	char			debug;
 	char			*file;
 	int				fd;
+	t_cam			cam;
 	t_obj			*obj;
 	t_obj			*cur;
 }					t_env;
