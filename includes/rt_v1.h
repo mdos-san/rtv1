@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 02:21:01 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 03:38:34 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RT_V1_H
 
 # include <unistd.h>
-# include <fcntl.h> 
+# include <fcntl.h>
 # include <mlx.h>
 
 # include "libft.h"
@@ -34,12 +34,13 @@ typedef struct		s_obj
 	char			type;
 	double			x;
 	double			y;
-	double			y;
+	double			z;
 	struct s_obj	*next;
-}					t_obj
+}					t_obj;
 
 typedef struct		s_env
 {
+	char			debug;
 	char			*file;
 	int				fd;
 	t_obj			*obj;

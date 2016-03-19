@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 23:34:34 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 02:13:07 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 02:42:21 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ t_env	*rt_v1_init(char *file)
 
 	if (!(new = (t_env*)malloc(sizeof(t_env))))
 		return (NULL);
+	new->debug = 1;
 	new->file = file;
 	new->fd = 0;
 	new->obj = NULL;
 	new->cur = NULL;
-	rt_v1_get_info(new);
-	(parse(new) == 1) ? 0 : rt_v1_exit(&new, "Error in parsing :'( !");
 	return (new);
 }

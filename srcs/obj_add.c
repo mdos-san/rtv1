@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 02:13:54 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 02:19:59 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/19 03:37:29 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	obj_add(t_obj **obj)
 	{
 		if (!(*obj = (t_obj*)malloc(sizeof(t_obj))))
 			return (0);
+		(*obj)->next = NULL;
 		(*obj)->type = -1;
 		(*obj)->x = 0;
 		(*obj)->y = 0;
@@ -25,5 +26,5 @@ int	obj_add(t_obj **obj)
 		return (1);
 	}
 	else
-		return(obj_add(&(*obj)->next));
+		return (obj_add(&(*obj)->next));
 }
