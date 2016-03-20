@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_convert.c                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/15 15:27:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 20:03:41 by mdos-san         ###   ########.fr       */
+/*   Created: 2015/12/09 18:08:51 by mdos-san          #+#    #+#             */
+/*   Updated: 2015/12/14 15:15:18 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libcolor.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include "libft.h"
+# define BUFF_SIZE 1024
 
-unsigned int	color_convert(t_color color)
-{
-	unsigned int	converted;
+int	get_next_line(int const fd, char **line);
 
-	*((unsigned char*)&converted + 0) = color.b;
-	*((unsigned char*)&converted + 1) = color.g;
-	*((unsigned char*)&converted + 2) = color.r;
-	*((unsigned char*)&converted + 3) = color.a;
-	return (converted);
-}
+#endif

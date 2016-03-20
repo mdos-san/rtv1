@@ -6,7 +6,7 @@
 /*   By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:52:23 by mdos-san          #+#    #+#             */
-/*   Updated: 2015/12/03 13:43:20 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 20:05:47 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ static int	check_nb_word(char const *s, char c)
 	return (nb_word);
 }
 
-static void	alloc_str(char ***tab_str, char const *s, int *i, int *i2)
+static int	alloc_str(char ***tab_str, char const *s, int *i, int *i2)
 {
 	if (*i2 > 0)
 	{
-		**tab_str = (char*)malloc(*i2 + 1);
+		if (!(**tab_str = (char*)malloc(*i2 + 1)))
+			return (0);
 		ft_strncpy(**tab_str, (s + *i), *i2);
 		*(**tab_str + *i2) = 0;
 		*tab_str = *tab_str + 1;
 		*i = *i + *i2 - 1;
 		*i2 = 0;
 	}
+	return (1);
 }
 
 char		**ft_strsplit(char const *s, char c)
@@ -60,8 +62,7 @@ char		**ft_strsplit(char const *s, char c)
 	if (!s || !c)
 		return (NULL);
 	nb_word = check_nb_word(s, c);
-	tab_str = (char**)malloc(sizeof(char*) * (nb_word + 1));
-	if (!tab_str)
+	if (!(tab_str = (char**)malloc(sizeof(char*) * (nb_word + 1))))
 		return (NULL);
 	tab_str[nb_word] = 0;
 	while (s[i])
@@ -70,7 +71,8 @@ char		**ft_strsplit(char const *s, char c)
 		{
 			while (s[i + i2] != c && s[i + i2])
 				i2++;
-			alloc_str(&tab_str, s, &i, &i2);
+			if (alloc_str(&tab_str, s, &i, &i2) == 0)
+				return (NULL);
 		}
 		i++;
 	}

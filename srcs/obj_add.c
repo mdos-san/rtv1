@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_convert.c                                    :+:      :+:    :+:   */
+/*   obj_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/15 15:27:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 20:03:41 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/19 02:13:54 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/20 17:46:45 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libcolor.h"
+#include "rt_v1.h"
 
-unsigned int	color_convert(t_color color)
+int	obj_add(t_obj **obj)
 {
-	unsigned int	converted;
-
-	*((unsigned char*)&converted + 0) = color.b;
-	*((unsigned char*)&converted + 1) = color.g;
-	*((unsigned char*)&converted + 2) = color.r;
-	*((unsigned char*)&converted + 3) = color.a;
-	return (converted);
+	if (*obj == NULL)
+	{
+		if (!(*obj = (t_obj*)malloc(sizeof(t_obj))))
+			return (0);
+		(*obj)->next = NULL;
+		(*obj)->type = -1;
+		(*obj)->o.x = 0;
+		(*obj)->o.y = 0;
+		(*obj)->o.z = 0;
+		(*obj)->col = color_get(255, 255, 255, 0);
+		return (1);
+	}
+	else
+		return (obj_add(&(*obj)->next));
 }

@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_convert.c                                    :+:      :+:    :+:   */
+/*   img_put_pixel.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/15 15:27:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 20:03:41 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/19 09:20:08 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/20 19:54:25 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libcolor.h"
+#include "rt_v1.h"
 
-unsigned int	color_convert(t_color color)
+void	img_pixel_put(t_img *img, int x, int y, t_color col)
 {
-	unsigned int	converted;
-
-	*((unsigned char*)&converted + 0) = color.b;
-	*((unsigned char*)&converted + 1) = color.g;
-	*((unsigned char*)&converted + 2) = color.r;
-	*((unsigned char*)&converted + 3) = color.a;
-	return (converted);
+	if (0 <= x && x < img->wid && 0 <= y && y < img->hei)
+		*(unsigned int*)(img->data + x * img->bpp + y * img->sl) =
+			color_convert(col);
 }

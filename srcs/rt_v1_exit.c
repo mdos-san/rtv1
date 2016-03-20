@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_convert.c                                    :+:      :+:    :+:   */
+/*   rt_v1_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/15 15:27:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 20:03:41 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/19 00:52:37 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/20 19:36:53 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libcolor.h"
+#include "rt_v1.h"
 
-unsigned int	color_convert(t_color color)
+void	rt_v1_exit(t_env **env, char *str)
 {
-	unsigned int	converted;
-
-	*((unsigned char*)&converted + 0) = color.b;
-	*((unsigned char*)&converted + 1) = color.g;
-	*((unsigned char*)&converted + 2) = color.r;
-	*((unsigned char*)&converted + 3) = color.a;
-	return (converted);
+	if (*env)
+	{
+		obj_destroy(&(*env)->obj);
+		free(*env);
+		*env = NULL;
+	}
+	ft_putendl(str);
+	exit(0);
 }

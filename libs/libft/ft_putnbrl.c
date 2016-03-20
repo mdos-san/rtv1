@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_cpy.c                                    :+:      :+:    :+:   */
+/*   ft_putnbrl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/01 11:14:07 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 20:04:53 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/01/23 08:37:52 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/01/23 08:38:00 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-t_list	*ft_lstnew_cpy(void const *content, size_t content_size)
+void	ft_putnbrl(int nbr)
 {
-	t_list	*new;
-
-	if (!(new = (t_list*)malloc(sizeof(t_list))))
-		return (NULL);
-	new->content = (void*)content;
-	new->content_size = content_size;
-	return (new);
+	ft_putnbr(nbr);
+	ft_putchar('\n');
 }
