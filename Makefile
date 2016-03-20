@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/20 18:55:30 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/20 19:02:43 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,5 @@ re			: fclean all
 
 norm		:
 	@norminette srcs includes
-	@make -C libs/libft/ norm
-	@make -C libs/libcolor/ norm
 
 .PHONY: all clean fclean re
