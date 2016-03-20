@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 01:00:11 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 03:46:40 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 16:55:26 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ static int	read_cel(t_env *env, const char *line)
 	env->cur->y = ft_atoi(line + ++i);
 	(get_next_cel(line, &i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
 	env->cur->z = ft_atoi(line + ++i);
+	(get_next_cel(line, &i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
+	env->cur->col.r = ft_atoi(line + ++i);
+	(get_next_cel(line, &i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
+	env->cur->col.g = ft_atoi(line + ++i);
+	(get_next_cel(line, &i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
+	env->cur->col.b = ft_atoi(line + ++i);
 	return (1);
 }
 

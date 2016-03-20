@@ -6,11 +6,21 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 00:43:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 03:45:23 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 16:58:39 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
+
+static void	get_color_info(t_obj *obj)
+{
+	ft_putstr("R = ");
+	ft_putnbrl(obj->col.r);
+	ft_putstr("G = ");
+	ft_putnbrl(obj->col.g);
+	ft_putstr("B = ");
+	ft_putnbrl(obj->col.b);
+}
 
 static void	chain_info(t_env *env)
 {
@@ -29,6 +39,7 @@ static void	chain_info(t_env *env)
 		ft_putnbrl(env->cur->y);
 		ft_putstr("Z = ");
 		ft_putnbrl(env->cur->z);
+		get_color_info(env->cur);
 		env->cur = env->cur->next;
 	}
 }

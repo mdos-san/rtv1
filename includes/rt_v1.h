@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 16:33:24 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 17:29:03 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define WID 800
 # define HEI 600
 
-# define RAYON 1
+# define RAYON 5
 
 # define CDTP 10
 
@@ -101,6 +101,7 @@ typedef struct		s_env
 	t_obj			*obj;
 	t_obj			*cur;
 	int				(*ft_ptr[1])(struct s_env *, t_obj);
+	double			dist;
 }					t_env;
 
 t_env				*rt_v1_init(char *file);
