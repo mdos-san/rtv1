@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 07:42:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 19:45:44 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:56:37 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void		render_loop(t_env *env)
 	w_coef = (double)P_WID / (double)WID;
 	h_coef = (double)P_HEI / (double)HEI;
 	init_pnt(env, &cur);
-	y = 0;
+	y = -1;
 	while (++y < HEI)
 	{
-		x = 0;
+		x = -1;
 		while (++x < WID)
 		{
 			env->dist = -1;
