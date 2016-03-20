@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 18:57:44 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:18:13 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct		s_obj
 	char			type;
 	t_pnt			o;
 	t_vec			v;
+	double			size;
 	double			d;
 	t_color			col;
 	struct s_obj	*next;

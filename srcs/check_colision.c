@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 08:31:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 18:48:51 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:19:14 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		sphere_colision(t_env *env, t_obj sph)
 			env->ray.v.y * (env->ray.o.y - sph.o.y) +
 			env->ray.v.z * (env->ray.o.z - sph.o.z));
 	c = (pow(env->ray.o.x - sph.o.x, 2) + pow(env->ray.o.y - sph.o.y, 2) +
-					pow(env->ray.o.z - sph.o.z, 2)) - pow(RAYON, 2); 
+					pow(env->ray.o.z - sph.o.z, 2)) - pow(sph.size, 2); 
 	det = b * b - 4 * a * c;
 	if (det >= 0)
 	{

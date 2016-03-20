@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:38:05 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 19:03:42 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:18:37 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void		init_sph(t_env *env, const char *line)
 	env->cur->o.y = ft_atoi(line + ++env->i);
 	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
 	env->cur->o.z = ft_atoi(line + ++env->i);
+	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
+	env->cur->size = ft_atoi(line + ++env->i);
 	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
 	env->cur->col.r = ft_atoi(line + ++env->i);
 	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
