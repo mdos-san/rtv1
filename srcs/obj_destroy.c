@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_convert.c                                    :+:      :+:    :+:   */
+/*   obj_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/15 15:27:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 17:23:31 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/20 19:30:35 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/20 19:43:23 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libcolor.h"
+#include "rt_v1.h"
 
-unsigned int	color_convert(t_color color)
+void	obj_destroy(t_obj **obj)
 {
-	unsigned int	converted;
+	t_obj	*tmp;
 
-	*((unsigned char*)&converted + 0) = color.b;
-	*((unsigned char*)&converted + 1) = color.g;
-	*((unsigned char*)&converted + 2) = color.r;
-	*((unsigned char*)&converted + 3) = color.a;
-	return (converted);
+	tmp = (*obj)->next;
+	while (*obj)
+	{
+		if (*obj)
+		{
+			free(*obj);
+			*obj = tmp;
+			if (tmp)
+				tmp = tmp->next;
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 10:29:08 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:35:40 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # define WID 800
 # define HEI 600
 
-# define RAYON 25
+# define RAYON 5
 
-# define STEP 100000
+# define CDTP 10
 
-# define P_WID (WID / 10)
-# define P_HEI (HEI / 10)
+# define P_WID (WID / 100)
+# define P_HEI (HEI / 100)
 
 # define SPH 0
 # define PLA 1
@@ -69,9 +69,10 @@ typedef struct		s_cam
 typedef struct		s_obj
 {
 	char			type;
-	double			x;
-	double			y;
-	double			z;
+	t_pnt			o;
+	t_vec			v;
+	double			size;
+	double			d;
 	t_color			col;
 	struct s_obj	*next;
 }					t_obj;
@@ -100,7 +101,9 @@ typedef struct		s_env
 	t_ray			ray;
 	t_obj			*obj;
 	t_obj			*cur;
-	int				(*ft_ptr[1])(struct s_env *, t_obj);
+	int				i;
+	int				(*ft_ptr[2])(struct s_env *, t_obj);
+	double			dist;
 }					t_env;
 
 t_env				*rt_v1_init(char *file);
@@ -108,11 +111,15 @@ void				rt_v1_exit(t_env **env, char *str);
 void				rt_v1_get_info(t_env *env);
 int					parse(t_env *env);
 int					obj_add(t_obj **obj);
+void				obj_destroy(t_obj **obj);
 void				rt_mlx_init(t_env *env);
 void				pnt_translate(t_pnt	*pnt, t_vec vec, double coef);
 void				render_loop(t_env *env);
 int					sphere_colision(t_env *env, t_obj sph);
+int					plane_colision(t_env *env, t_obj sph);
 void				check_colision(t_env *env);
 void				img_pixel_put(t_img *img, int x, int y, t_color col);
+void				init_sph(t_env *env, const char *line);
+void				init_pla(t_env *env, const char *line);
 
 #endif

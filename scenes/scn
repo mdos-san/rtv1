@@ -3,13 +3,28 @@
 #
 #	This is a scene file, use a '#' to comment.
 #
-#
+#	/---------------------------\
+#	|PLS: Comment all empty line|
+#	\---------------------------/
 #
 #	Basic syntax: [object] [pos_x] [pos_y] [pos_z]
 #
 #	Object available:	[sph] : sphere
 #						[pla] : plane
-#						[cyl] : cylinder
-#						[con] : cone
+#SPHERE	---POSITION---	-RAYON-	----COLOR----
+#[sph]	[10] [20] [16]	  [5]  	[255] [0] [0]
 #
-[sph] [0] [0] [0]
+#PLANE	---POSITION---	---N_VEC---	-----COLOR-----
+#[pla]	[0] [01] [-10]	[0] [0] [1] [0] [255] [255]
+#
+#	Sphere definition:
+#
+[sph]	[10]  [20]  [16] 	[5]		[255] [0] [0]
+[sph]	[0]	  [200]   [0]	[20]	[0] [255] [0]
+[sph]	[-10] [-10] [-10]	[5]		[0] [0] [255
+[sph]	[-10] [-50] [14]	[5]		[255] [0] [255
+#
+#	Plane definition:
+#
+[pla] [0] [0] [-10] [0] [0] [1] [0] [255] [255]
+[pla] [12] [0] [0] [1] [0] [0] [255] [255] [0]

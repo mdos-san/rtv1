@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 01:00:11 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 03:46:40 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 18:59:30 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,17 @@ static int	get_next_cel(const char *line, int *index)
 
 static void	get_name(t_env *env, const char *line)
 {
-	(ft_strncmp(line, "[sph]", 5) == 0) ? (env->cur->type = SPH) : 0;
-	(ft_strncmp(line, "[pla]", 5) == 0) ? (env->cur->type = PLA) : 0;
+	(ft_strncmp(line, "[sph]", 5) == 0) ? init_sph(env, line) : 0;
+	(ft_strncmp(line, "[pla]", 5) == 0) ? init_pla(env, line) : 0;
 	(ft_strncmp(line, "[cyl]", 5) == 0) ? (env->cur->type = CYL) : 0;
 	(ft_strncmp(line, "[con]", 5) == 0) ? (env->cur->type = CON) : 0;
 }
 
 static int	read_cel(t_env *env, const char *line)
 {
-	int	i;
-
-	i = 0;
-	(get_next_cel(line, &i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
-	get_name(env, line + ++i - 1);
-	(get_next_cel(line, &i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
-	env->cur->x = ft_atoi(line + ++i);
-	(get_next_cel(line, &i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
-	env->cur->y = ft_atoi(line + ++i);
-	(get_next_cel(line, &i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
-	env->cur->z = ft_atoi(line + ++i);
+	env->i = 0;
+	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
+	get_name(env, line + ++env->i - 1);
 	return (1);
 }
 
@@ -66,6 +58,8 @@ int			parse(t_env *env)
 		}
 		(line) ? free(line) : 0;
 	}
+	if (ret == -1)
+		rt_v1_exit(&env, "Stop trying to open a dir noob <3!");
 	close(env->fd);
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/19 09:32:18 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/20 19:51:53 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,14 @@ TMP_C		=\
 			 rt_v1_get_info.c\
 			 parse.c\
 			 obj_add.c\
+			 obj_destroy.c\
 			 rt_mlx_init.c\
 			 pnt_translate.c\
 			 render_loop.c\
 			 img_pixel_put.c\
 			 check_colision.c\
+			 init_sph.c\
+			 init_pla.c\
 			 main.c
 SRC_C		= $(TMP_C:%=src/%)
 
@@ -99,7 +102,9 @@ re			: fclean all
 
 norm		:
 	@norminette srcs includes
-	@make -C libs/libft/ norm
-	@make -C libs/libcolor/ norm
 
-.PHONY: all clean fclean re
+full_norm	: norm
+	@make norm -C libs/libft
+	@make norm -C libs/libcolor
+
+.PHONY: all clean fclean re norm full_norm

@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:59:09 by mdos-san          #+#    #+#              #
-#    Updated: 2016/01/12 05:22:25 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/20 19:49:54 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,3 +63,6 @@ fclean: clean
 	@echo "Done"
 
 re: fclean all
+
+norm:
+	@norminette *.c includes

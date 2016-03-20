@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 00:52:37 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 01:06:14 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:36:53 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	rt_v1_exit(t_env **env, char *str)
 {
 	if (*env)
 	{
+		obj_destroy(&(*env)->obj);
 		free(*env);
 		*env = NULL;
 	}
