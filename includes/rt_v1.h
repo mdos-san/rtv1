@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 17:45:50 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 18:57:44 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ typedef struct		s_obj
 {
 	char			type;
 	t_pnt			o;
+	t_vec			v;
+	double			d;
 	t_color			col;
 	struct s_obj	*next;
 }					t_obj;
@@ -99,7 +101,7 @@ typedef struct		s_env
 	t_obj			*obj;
 	t_obj			*cur;
 	int				i;
-	int				(*ft_ptr[1])(struct s_env *, t_obj);
+	int				(*ft_ptr[2])(struct s_env *, t_obj);
 	double			dist;
 }					t_env;
 
@@ -112,8 +114,10 @@ void				rt_mlx_init(t_env *env);
 void				pnt_translate(t_pnt	*pnt, t_vec vec, double coef);
 void				render_loop(t_env *env);
 int					sphere_colision(t_env *env, t_obj sph);
+int					plane_colision(t_env *env, t_obj sph);
 void				check_colision(t_env *env);
 void				img_pixel_put(t_img *img, int x, int y, t_color col);
 void				init_sph(t_env *env, const char *line);
+void				init_pla(t_env *env, const char *line);
 
 #endif

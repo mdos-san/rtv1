@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 08:31:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 17:47:51 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 18:48:51 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ int		sphere_colision(t_env *env, t_obj sph)
 			(-b + sqrt(det)) / (2 * a) : (-b - sqrt(det)) / (2 * a);
 		return (1);
 	}
+	else
+		return (0);
+}
+
+int		plane_colision(t_env *env, t_obj pla)
+{
+	double	x;
+	double	y;
+	double	z;
+
+	x = env->ray.o.x -  pla.o.x;
+	y = env->ray.o.y -  pla.o.y;
+	z = env->ray.o.z -  pla.o.z;
+	env->ray.dist = -((pla.v.x * x + pla.v.y * y + pla.v.z * z)
+	/ (pla.v.x * env->ray.v.x + pla.v.y * env->ray.v.y + pla.v.z * env->ray.v.z));
+	if (env->ray.dist > 0)
+		return (1);
 	else
 		return (0);
 }

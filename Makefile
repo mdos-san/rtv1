@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/20 17:48:16 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/20 18:55:30 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ TMP_C		=\
 			 img_pixel_put.c\
 			 check_colision.c\
 			 init_sph.c\
+			 init_pla.c\
 			 main.c
 SRC_C		= $(TMP_C:%=src/%)
 

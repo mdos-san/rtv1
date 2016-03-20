@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 23:34:34 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 09:51:04 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 18:09:58 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_env		*rt_v1_init(char *file)
 	new->cur = NULL;
 	new->col = color_get(255, 255, 255, 0);
 	new->ft_ptr[0] = sphere_colision;
+	new->ft_ptr[1] = plane_colision;
 	init_cam(new);
 	return (new);
 }
