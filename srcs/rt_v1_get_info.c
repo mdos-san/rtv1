@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 00:43:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 16:58:39 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 17:45:08 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void	chain_info(t_env *env)
 		(env->cur->type == CYL) ? ft_putendl("Cylinder") : 0;
 		(env->cur->type == CON) ? ft_putendl("Cone") : 0;
 		ft_putstr("X = ");
-		ft_putnbrl(env->cur->x);
+		ft_putnbrl(env->cur->o.x);
 		ft_putstr("Y = ");
-		ft_putnbrl(env->cur->y);
+		ft_putnbrl(env->cur->o.y);
 		ft_putstr("Z = ");
-		ft_putnbrl(env->cur->z);
+		ft_putnbrl(env->cur->o.z);
 		get_color_info(env->cur);
 		env->cur = env->cur->next;
 	}
