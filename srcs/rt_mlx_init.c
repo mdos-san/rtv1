@@ -6,11 +6,17 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 04:36:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 04:39:29 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:28:34 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
+
+int		key_hook(int keycode, t_env *env)
+{
+	(keycode == 53) ? rt_v1_exit(&env, "Program exited :3"): 0;
+	return (1);
+}
 
 void	rt_mlx_init(t_env *env)
 {
@@ -26,4 +32,5 @@ void	rt_mlx_init(t_env *env)
 			&env->img.bpp, &env->img.sl, &env->img.ed)))
 		rt_v1_exit(&env, "Failling to get data :/");
 	env->img.bpp /= 8;
+	mlx_key_hook(env->win, key_hook, env);
 }

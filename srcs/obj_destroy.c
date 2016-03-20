@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_v1_exit.c                                       :+:      :+:    :+:   */
+/*   obj_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/19 00:52:37 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 19:36:53 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/20 19:30:35 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/20 19:43:23 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
 
-void	rt_v1_exit(t_env **env, char *str)
+void	obj_destroy(t_obj **obj)
 {
-	if (*env)
+	t_obj	*tmp;
+
+	tmp = (*obj)->next;
+	while (*obj)
 	{
-		obj_destroy(&(*env)->obj);
-		free(*env);
-		*env = NULL;
+		if (*obj)
+		{
+			free(*obj);
+			*obj = tmp;
+			if (tmp)
+				tmp = tmp->next;
+		}
 	}
-	ft_putendl(str);
-	exit(0);
 }
