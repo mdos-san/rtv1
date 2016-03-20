@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 07:42:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 17:02:41 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:45:44 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,19 @@ void		render_loop(t_env *env)
 	h_coef = (double)P_HEI / (double)HEI;
 	init_pnt(env, &cur);
 	y = 0;
-	while (y < HEI)
+	while (++y < HEI)
 	{
 		x = 0;
-		while (x < WID)
+		while (++x < WID)
 		{
 			env->dist = -1;
 			init_ray(env, cur);
 			check_colision(env);
 			(env->dist != -1) ? img_pixel_put(&env->img, x, y, env->col) : 0;
 			pnt_translate(&cur, env->cam.vx, w_coef);
-			++x;
 		}
 		pnt_translate(&cur, env->cam.vx, -w_coef * WID);
 		pnt_translate(&cur, env->cam.vz, -h_coef);
-		++y;
 	}
 	ft_putendl("Rendering done, enjoy ! <3");
 }

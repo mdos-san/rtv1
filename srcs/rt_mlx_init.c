@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 04:36:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 19:28:34 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:44:46 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		key_hook(int keycode, t_env *env)
 {
-	(keycode == 53) ? rt_v1_exit(&env, "Program exited :3"): 0;
+	(keycode == 53) ? rt_v1_exit(&env, "Program exited :3") : 0;
 	return (1);
 }
 
