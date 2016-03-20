@@ -40,10 +40,8 @@ int			parse(t_env *env)
 {
 	char	*line;
 	int		ret;
-	int		cel;
 
 	line = NULL;
-	cel = 1;
 	ret = 0;
 	if (!(env->fd = open(env->file, O_RDONLY)) > 0)
 		rt_v1_exit(&env, "Can't open the file :'( !");

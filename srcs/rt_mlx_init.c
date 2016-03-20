@@ -14,7 +14,8 @@
 
 int		key_hook(int keycode, t_env *env)
 {
-	(keycode == 53) ? rt_v1_exit(&env, "Program exited :3") : 0;
+	(keycode == 53 || keycode == 65307)
+	? rt_v1_exit(&env, "Program exited :3") : 0;
 	return (1);
 }
 

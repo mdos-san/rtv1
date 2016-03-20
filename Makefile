@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/20 19:51:53 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/20 20:09:27 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		= rtv1
 COMPILER	= gcc
 FLAGS		= -Wall -Werror -Wextra -I./includes
 DEBUG		= -g3 -fsanitize=address
-LIBS		= -L./libs -lft -lmlx -lcolor
+LIBS		= -L./libs -lft -lmlx -lcolor -lm
 
 OS			= $(shell uname)
 
