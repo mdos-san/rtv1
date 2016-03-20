@@ -15,7 +15,7 @@ NAME		= rtv1
 COMPILER	= gcc
 FLAGS		= -Wall -Werror -Wextra -I./includes
 DEBUG		= -g3 -fsanitize=address
-LIBS		= -L./libs -lft -lmlx -lcolor
+LIBS		= -L./libs -lft -lmlx -lcolor -lm
 
 OS			= $(shell uname)
 
