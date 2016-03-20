@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 10:29:08 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 16:33:24 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # define WID 800
 # define HEI 600
 
-# define RAYON 25
+# define RAYON 1
 
-# define STEP 100000
+# define CDTP 10
 
-# define P_WID (WID / 10)
-# define P_HEI (HEI / 10)
+# define P_WID (WID / 100)
+# define P_HEI (HEI / 100)
 
 # define SPH 0
 # define PLA 1

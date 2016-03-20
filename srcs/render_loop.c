@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 07:42:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/19 10:28:58 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/20 16:32:45 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	init_pnt(t_env *env, t_pnt *cur)
 {
 	*cur = env->cam.o;
-	pnt_translate(cur, env->cam.vy, 10);
+	pnt_translate(cur, env->cam.vy, CDTP);
 	pnt_translate(cur, env->cam.vx, -(P_WID / 2));
 	pnt_translate(cur, env->cam.vz, P_HEI / 2);
 }
@@ -23,7 +23,6 @@ static void	init_pnt(t_env *env, t_pnt *cur)
 static void	init_ray(t_env *env, t_pnt cur)
 {
 	env->ray.o = env->cam.o;
-	pnt_translate(&env->ray.o, env->cam.vy, STEP);
 	env->ray.v.x = cur.x - env->ray.o.x;
 	env->ray.v.y = cur.y - env->ray.o.y;
 	env->ray.v.z = cur.z - env->ray.o.z;
