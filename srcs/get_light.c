@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 16:59:41 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 18:34:51 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:47:56 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,16 @@ static int	light_sph(t_env *env)
 			vl = vec_get(pc.x - pi.x, pc.y - pi.y, pc.z - pi.z);
 			vec_norm(&vl);
 			angle = vec_get_angle(vn, vl);
-			env->col.r = env->col.r * angle / 360;
-			env->col.g = env->col.g * angle / 360;
-			env->col.b = env->col.b * angle / 360;
+			angle = (90 - angle) / 360;
+			env->col.r = (env->col.r * angle + env->light->col.r * angle >= 255) ? 255 : (env->col.r * angle + env->light->col.r * angle);
+			env->col.g = (env->col.g * angle + env->light->col.g * angle >= 255) ? 255 : (env->col.g * angle + env->light->col.g * angle);
+			env->col.b = (env->col.b * angle + env->light->col.b * angle >= 255) ? 255 : (env->col.b * angle + env->light->col.b * angle);
+			if (angle < 0)
+			{
+				env->col.r = 0;
+				env->col.g = 0;
+				env->col.b = 0;
+			}
 		}
 		env->light = env->light->next;
 	}
