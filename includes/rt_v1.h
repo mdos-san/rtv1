@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 18:19:27 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:27:39 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void				init_lum(t_env *env, const char *line);
 t_vec				vec_get(double x, double y, double z);
 void				vec_norm(t_vec *v);
 double				vec_lenght(t_vec v);
+double				vec_get_angle(t_vec v1, t_vec v2);
 void				get_light(t_env *env);
 
 #endif
