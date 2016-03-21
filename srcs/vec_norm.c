@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_light.c                                        :+:      :+:    :+:   */
+/*   vec_norm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/21 16:59:41 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 17:35:42 by mdos-san         ###   ########.fr       */
+/*   Created: 2016/03/21 17:29:42 by mdos-san          #+#    #+#             */
+/*   Updated: 2016/03/21 17:35:32 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
 
-static int	light_sph(t_env *env)
+void	vec_norm(t_vec *v)
 {
-	(void)env;
-	return (1);
-}
+	double	l;
 
-void		get_light(t_env *env)
-{
-	(env->cur->type == SPH) ? light_sph(env) : 0;
+	l = sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2));
+	v->x = v->x / l;
+	v->y = v->y / l;
+	v->z = v->z / l;
 }
