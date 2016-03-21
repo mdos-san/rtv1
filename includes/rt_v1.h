@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 18:27:39 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 19:55:38 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define RAYON 5
 
 # define CDTP 10
+
+# define BRI 20
 
 # define P_WID (WID / 100)
 # define P_HEI (HEI / 100)
