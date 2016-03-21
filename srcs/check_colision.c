@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 08:31:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 16:41:52 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 16:55:15 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	new_pnt(t_env *env)
 {
 	env->dist = env->ray.dist;
 	env->col = env->cur->col;
+	get_light(env);
 }
 
 void		check_colision(t_env *env)
@@ -66,6 +67,7 @@ void		check_colision(t_env *env)
 	env->cur = env->obj;
 	while (env->cur)
 	{
+		env->light = env->obj;
 		if (env->cur->type != LUM)
 			env->ft_ptr[(int)env->cur->type](env, *env->cur);
 		((env->dist == -1 && env->ray.dist > 0) ||
