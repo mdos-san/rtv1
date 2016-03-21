@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/21 16:33:33 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/21 17:28:00 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ TMP_C		=\
 			 init_sph.c\
 			 init_pla.c\
 			 init_lum.c\
+			 vec_get.c\
 			 main.c
 SRC_C		= $(TMP_C:%=src/%)
 

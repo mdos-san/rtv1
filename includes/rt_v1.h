@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 16:55:54 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 17:27:42 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void				img_pixel_put(t_img *img, int x, int y, t_color col);
 void				init_sph(t_env *env, const char *line);
 void				init_pla(t_env *env, const char *line);
 void				init_lum(t_env *env, const char *line);
+t_vec				vec_get(double x, double y, double z);
 void				get_light(t_env *env);
 
 #endif
