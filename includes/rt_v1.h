@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 17:33:31 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:19:27 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct		s_ray
 	t_pnt			o;
 	t_vec			v;
 	double			dist;
+	t_pnt			inter;
 }					t_ray;
 
 typedef struct		s_cam
@@ -126,6 +127,7 @@ void				init_pla(t_env *env, const char *line);
 void				init_lum(t_env *env, const char *line);
 t_vec				vec_get(double x, double y, double z);
 void				vec_norm(t_vec *v);
+double				vec_lenght(t_vec v);
 void				get_light(t_env *env);
 
 #endif
