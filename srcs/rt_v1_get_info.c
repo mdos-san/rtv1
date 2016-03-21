@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 00:43:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 17:45:08 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 16:36:47 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	chain_info(t_env *env)
 		(env->cur->type == PLA) ? ft_putendl("Plane") : 0;
 		(env->cur->type == CYL) ? ft_putendl("Cylinder") : 0;
 		(env->cur->type == CON) ? ft_putendl("Cone") : 0;
+		(env->cur->type == LUM) ? ft_putendl("Lumiere") : 0;
 		ft_putstr("X = ");
 		ft_putnbrl(env->cur->o.x);
 		ft_putstr("Y = ");

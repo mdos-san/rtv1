@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 08:31:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 19:47:23 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 16:41:52 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void		check_colision(t_env *env)
 	env->cur = env->obj;
 	while (env->cur)
 	{
-		env->ft_ptr[(int)env->cur->type](env, *env->cur);
+		if (env->cur->type != LUM)
+			env->ft_ptr[(int)env->cur->type](env, *env->cur);
 		((env->dist == -1 && env->ray.dist > 0) ||
 			(0 < env->ray.dist && env->ray.dist < env->dist))
 				? new_pnt(env) : 0;

@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 20:01:53 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/21 16:33:16 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define PLA 1
 # define CYL 2
 # define CON 3
+# define LUM 4
 
 typedef struct		s_pnt
 {
@@ -121,5 +122,6 @@ void				check_colision(t_env *env);
 void				img_pixel_put(t_img *img, int x, int y, t_color col);
 void				init_sph(t_env *env, const char *line);
 void				init_pla(t_env *env, const char *line);
+void				init_lum(t_env *env, const char *line);
 
 #endif
