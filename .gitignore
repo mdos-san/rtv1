@@ -3,3 +3,4 @@ libs/*.a
 objects
 rtv1
 libs/libft/.nfs.2005104b.ce7f
+libs/minilibx_linux/libmlx_Linux.a
