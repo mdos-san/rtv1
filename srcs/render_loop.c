@@ -29,23 +29,13 @@ static void	init_ray(t_env *env, t_pnt cur)
 	env->ray.dist = -1;
 }
 
-static void	img_clear(t_img *img, t_color col)
+static void	img_clear(t_env *env, t_img *img)
 {
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < img->hei)
-	{
-		x = 0;
-		while (x < img->wid)
-		{
-			img_pixel_put(img, x, y, col);
-			++x;
-		}
-		++y;
-	}
-
+	if (img->ptr)
+		mlx_destroy_image(env->mlx, img->ptr);
+	img->ptr = mlx_new_image(env->mlx, img->wid, img->hei);
+	img->data = mlx_get_data_addr(img->ptr, &img->bpp, &img->sl, &img->ed);
+	img->bpp /= 8;
 }
 
 void		render_loop(t_env *env)
@@ -55,12 +45,14 @@ void		render_loop(t_env *env)
 	double	h_coef;
 	int		x;
 	int		y;
+	char		ev;
 
+	ev = cam_moving(env);
 	w_coef = (double)P_WID / (double)WID;
 	h_coef = (double)P_HEI / (double)HEI;
 	init_pnt(env, &cur);
 	y = -1;
-	img_clear(&env->img, color_get(0, 0, 0, 0));
+	img_clear(env, &env->img);
 	while (++y < HEI)
 	{
 		x = -1;
@@ -71,13 +63,13 @@ void		render_loop(t_env *env)
 			check_colision(env);
 			(env->dist != -1) ? img_pixel_put(&env->img, x, y, env->col) : 0;
 			pnt_translate(&cur, env->cam.vx, w_coef);
-			if (cam_moving(env))
+			if (ev)
 			{
 				++x;
 				pnt_translate(&cur, env->cam.vx, w_coef);
 			}
 		}
-		if (cam_moving(env))
+		if (ev)
 		{
 			++y;
 			pnt_translate(&cur, env->cam.vz, -h_coef);
