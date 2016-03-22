@@ -130,7 +130,7 @@ void				init_lum(t_env *env, const char *line);
 t_vec				vec_get(double x, double y, double z);
 void				vec_norm(t_vec *v);
 double				vec_lenght(t_vec v);
-double				vec_get_angle(t_vec v1, t_vec v2);
+double				vec_dot(t_vec v1, t_vec v2);
 void				get_light(t_env *env);
 
 #endif

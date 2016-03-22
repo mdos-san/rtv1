@@ -23,6 +23,7 @@ static int	light_pla(t_env *env)
 	vn = env->cur->v;
 	pi = env->ray.inter;
 	env->col = color_get(0, 0, 0, 0);
+	vec_norm(&vn);
 	while (env->light)
 	{
 		if (env->light->type == LUM)
@@ -30,13 +31,12 @@ static int	light_pla(t_env *env)
 			pc = env->light->o;
 			vl = vec_get(pc.x - pi.x, pc.y - pi.y, pc.z - pi.z);
 			vec_norm(&vl);
-			angle = vec_get_angle(vn, vl);
-			angle = (-90 + angle) / 360;
+			angle = vec_dot(vn, vl);
 			if (angle > 0)
 			{
-				env->col.r += (env->cur->col.r * angle + env->light->col.r * angle >= 255) ? 255 : (env->cur->col.r * angle + env->light->col.r * angle);
-				env->col.g += (env->cur->col.g * angle + env->light->col.g * angle >= 255) ? 255 : (env->cur->col.g * angle + env->light->col.g * angle);
-				env->col.b += (env->cur->col.b * angle + env->light->col.b * angle >= 255) ? 255 : (env->cur->col.b * angle + env->light->col.b * angle);
+				env->col.r += (env->cur->col.r * env->light->col.r * angle >= 255) ? 255 : (env->cur->col.r * env->light->col.r * angle);
+				env->col.g += (env->cur->col.g * env->light->col.g * angle >= 255) ? 255 : (env->cur->col.g * env->light->col.g * angle);
+				env->col.b += (env->cur->col.b * env->light->col.b * angle >= 255) ? 255 : (env->cur->col.b * env->light->col.b * angle);
 			}
 		}
 		env->light = env->light->next;
@@ -64,13 +64,12 @@ static int	light_sph(t_env *env)
 			pc = env->light->o;
 			vl = vec_get(pc.x - pi.x, pc.y - pi.y, pc.z - pi.z);
 			vec_norm(&vl);
-			angle = vec_get_angle(vn, vl);
-			angle = (90 - angle) / 360;
+			angle = vec_dot(vn, vl);
 			if (angle > 0)
 			{
-				env->col.r += (env->cur->col.r * angle + env->light->col.r * angle >= 255) ? 255 : (env->cur->col.r * angle + env->light->col.r * angle);
-				env->col.g += (env->cur->col.g * angle + env->light->col.g * angle >= 255) ? 255 : (env->cur->col.g * angle + env->light->col.g * angle);
-				env->col.b += (env->cur->col.b * angle + env->light->col.b * angle >= 255) ? 255 : (env->cur->col.b * angle + env->light->col.b * angle);
+				env->col.r += (env->cur->col.r * env->light->col.r * angle >= 255) ? 255 : (env->cur->col.r * env->light->col.r * angle);
+				env->col.g += (env->cur->col.g * env->light->col.g * angle >= 255) ? 255 : (env->cur->col.g * env->light->col.g * angle);
+				env->col.b += (env->cur->col.b * env->light->col.b * angle >= 255) ? 255 : (env->cur->col.b * env->light->col.b * angle);
 			}
 		}
 		env->light = env->light->next;

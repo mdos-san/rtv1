@@ -30,9 +30,9 @@ void		init_lum(t_env *env, const char *line)
 	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
 	env->cur->o.z = ft_atoi(line + ++env->i);
 	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
-	env->cur->col.r = ft_atoi(line + ++env->i);
+	env->cur->col.r = ft_atoi(line + ++env->i) / 255;
 	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
-	env->cur->col.g = ft_atoi(line + ++env->i);
+	env->cur->col.g = ft_atoi(line + ++env->i) / 255;
 	(get_next_cel(line, &env->i) == -1) ? rt_v1_exit(&env, ":( !") : 0;
-	env->cur->col.b = ft_atoi(line + ++env->i);
+	env->cur->col.b = ft_atoi(line + ++env->i) / 255;
 }
