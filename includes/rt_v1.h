@@ -22,6 +22,9 @@
 # include "get_next_line.h"
 # include "libcolor.h"
 
+# define KP 2
+# define KPM (1L<<0)
+
 # define WID 800
 # define HEI 600
 
@@ -110,6 +113,9 @@ typedef struct		s_env
 	int				(*ft_ptr[2])(struct s_env *, t_obj);
 	double			dist;
 	char			draw;
+	char			ev_rotx;
+	char			ev_rotz;
+	char			ev_mvy;
 }					t_env;
 
 t_env				*rt_v1_init(char *file);
@@ -136,5 +142,7 @@ double				vec_dot(t_vec v1, t_vec v2);
 void				get_light(t_env *env);
 void				cam_rot_z(t_env * env, int dir);
 void				cam_rot_x(t_env * env, int dir);
+void				cam_mv_y(t_env *env, int dir);
+int				cam_moving(t_env *env);
 
 #endif

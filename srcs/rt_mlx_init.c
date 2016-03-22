@@ -12,15 +12,29 @@
 
 #include "rt_v1.h"
 
+int		key_press(int keycode, t_env *env)
+{
+	(keycode == 119) ? (env->ev_mvy = 1) : 0;
+	(keycode == 115) ? (env->ev_mvy = -1) : 0;
+	(keycode == 65361) ? (env->ev_rotz = -1) : 0;
+	(keycode == 65363) ? (env->ev_rotz = 1) : 0;
+	(keycode == 65362) ? (env->ev_rotx = 1) : 0;
+	(keycode == 65364) ? (env->ev_rotx = -1) : 0;
+	return (1);
+}
+
 int		key_hook(int keycode, t_env *env)
 {
 	ft_putnbrl(keycode);
 	(keycode == 53 || keycode == 65307)
 	? rt_v1_exit(&env, "Program exited :3") : 0;
-	(keycode == 65361) ? cam_rot_z(env, -1) : 0;
-	(keycode == 65363) ? cam_rot_z(env, 1) : 0;
-	(keycode == 65362) ? cam_rot_x(env, 1) : 0;
-	(keycode == 65364) ? cam_rot_x(env, -1) : 0;
+	(keycode == 119) ? (env->ev_mvy = 0) : 0;
+	(keycode == 115) ? (env->ev_mvy = 0) : 0;
+	(keycode == 65361) ? (env->ev_rotz = 0) : 0;
+	(keycode == 65363) ? (env->ev_rotz = 0) : 0;
+	(keycode == 65362) ? (env->ev_rotx = 0) : 0;
+	(keycode == 65364) ? (env->ev_rotx = 0) : 0;
+	env->draw = 1;
 	return (1);
 }
 
@@ -33,6 +47,12 @@ int		expose_hook(t_env *env)
 
 int		loop_hook(t_env *env)
 {
+	(env->ev_mvy == 1) ? cam_mv_y(env, 1) : 0;
+	(env->ev_mvy == -1) ? cam_mv_y(env, -1) : 0;
+	(env->ev_rotz == -1) ? cam_rot_z(env, -1): 0;
+	(env->ev_rotz == 1) ? cam_rot_z(env, 1): 0;
+	(env->ev_rotx == 1) ? cam_rot_x(env, 1): 0;
+	(env->ev_rotx == -1) ? cam_rot_x(env, -1): 0;
 	if (env->draw != 0)
 	{
 		expose_hook(env);
@@ -55,6 +75,7 @@ void		rt_mlx_init(t_env *env)
 			&env->img.bpp, &env->img.sl, &env->img.ed)))
 		rt_v1_exit(&env, "Failling to get data :/");
 	env->img.bpp /= 8;
+	mlx_hook(env->win, KP, KPM, key_press, env);
 	mlx_key_hook(env->win, key_hook, env);
 	mlx_expose_hook(env->win, expose_hook, env);
 	mlx_loop_hook(env->mlx, loop_hook, env);

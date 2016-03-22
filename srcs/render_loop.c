@@ -71,9 +71,18 @@ void		render_loop(t_env *env)
 			check_colision(env);
 			(env->dist != -1) ? img_pixel_put(&env->img, x, y, env->col) : 0;
 			pnt_translate(&cur, env->cam.vx, w_coef);
+			if (cam_moving(env))
+			{
+				++x;
+				pnt_translate(&cur, env->cam.vx, w_coef);
+			}
+		}
+		if (cam_moving(env))
+		{
+			++y;
+			pnt_translate(&cur, env->cam.vz, -h_coef);
 		}
 		pnt_translate(&cur, env->cam.vx, -w_coef * WID);
 		pnt_translate(&cur, env->cam.vz, -h_coef);
 	}
-	ft_putendl("Rendering done, enjoy ! <3");
 }

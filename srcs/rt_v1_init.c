@@ -40,6 +40,9 @@ t_env		*rt_v1_init(char *file)
 	new->draw = 1;
 	new->obj = NULL;
 	new->cur = NULL;
+	new->ev_rotx = 0;
+	new->ev_rotz = 0;
+	new->ev_mvy = 0;
 	new->col = color_get(255, 255, 255, 0);
 	new->ft_ptr[0] = sphere_colision;
 	new->ft_ptr[1] = plane_colision;

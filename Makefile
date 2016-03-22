@@ -48,6 +48,8 @@ TMP_C		=\
 			 get_light.c\
 			 cam_rot_z.c\
 			 cam_rot_x.c\
+			 cam_mv_y.c\
+			 cam_moving.c\
 			 main.c
 SRC_C		= $(TMP_C:%=src/%)
 
