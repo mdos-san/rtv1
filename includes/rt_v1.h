@@ -114,6 +114,7 @@ typedef struct		s_env
 	double			dist;
 	char			draw;
 	char			ev_rotx;
+	char			ev_roty;
 	char			ev_rotz;
 	char			ev_mvy;
 }					t_env;
@@ -140,8 +141,9 @@ void				vec_norm(t_vec *v);
 double				vec_lenght(t_vec v);
 double				vec_dot(t_vec v1, t_vec v2);
 void				get_light(t_env *env);
-void				cam_rot_z(t_env * env, int dir);
 void				cam_rot_x(t_env * env, int dir);
+void				cam_rot_y(t_env * env, int dir);
+void				cam_rot_z(t_env * env, int dir);
 void				cam_mv_y(t_env *env, int dir);
 int				cam_moving(t_env *env);
 
