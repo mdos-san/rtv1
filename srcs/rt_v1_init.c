@@ -37,6 +37,7 @@ t_env		*rt_v1_init(char *file)
 	new->debug = 1;
 	new->file = file;
 	new->fd = 0;
+	new->draw = 1;
 	new->obj = NULL;
 	new->cur = NULL;
 	new->col = color_get(255, 255, 255, 0);

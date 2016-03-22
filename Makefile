@@ -41,10 +41,13 @@ TMP_C		=\
 			 init_pla.c\
 			 init_lum.c\
 			 vec_get.c\
+			 vec_add.c\
 			 vec_norm.c\
 			 vec_lenght.c\
 			 vec_get_angle.c\
 			 get_light.c\
+			 cam_rot_z.c\
+			 cam_rot_x.c\
 			 main.c
 SRC_C		= $(TMP_C:%=src/%)
 

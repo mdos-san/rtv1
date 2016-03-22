@@ -109,6 +109,7 @@ typedef struct		s_env
 	int				i;
 	int				(*ft_ptr[2])(struct s_env *, t_obj);
 	double			dist;
+	char			draw;
 }					t_env;
 
 t_env				*rt_v1_init(char *file);
@@ -128,9 +129,12 @@ void				init_sph(t_env *env, const char *line);
 void				init_pla(t_env *env, const char *line);
 void				init_lum(t_env *env, const char *line);
 t_vec				vec_get(double x, double y, double z);
+void				vec_add(t_vec *v1, t_vec v2, double coef);
 void				vec_norm(t_vec *v);
 double				vec_lenght(t_vec v);
 double				vec_dot(t_vec v1, t_vec v2);
 void				get_light(t_env *env);
+void				cam_rot_z(t_env * env, int dir);
+void				cam_rot_x(t_env * env, int dir);
 
 #endif

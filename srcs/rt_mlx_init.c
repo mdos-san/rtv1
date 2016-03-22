@@ -14,12 +14,34 @@
 
 int		key_hook(int keycode, t_env *env)
 {
+	ft_putnbrl(keycode);
 	(keycode == 53 || keycode == 65307)
 	? rt_v1_exit(&env, "Program exited :3") : 0;
+	(keycode == 65361) ? cam_rot_z(env, -1) : 0;
+	(keycode == 65363) ? cam_rot_z(env, 1) : 0;
+	(keycode == 65362) ? cam_rot_x(env, 1) : 0;
+	(keycode == 65364) ? cam_rot_x(env, -1) : 0;
 	return (1);
 }
 
-void	rt_mlx_init(t_env *env)
+int		expose_hook(t_env *env)
+{
+	render_loop(env);
+	mlx_put_image_to_window(env->mlx, env->win, env->img.ptr, 0, 0);
+	return (1);
+}
+
+int		loop_hook(t_env *env)
+{
+	if (env->draw != 0)
+	{
+		expose_hook(env);
+		env->draw = 0;
+	}
+	return (1);
+}
+
+void		rt_mlx_init(t_env *env)
 {
 	if (!(env->mlx = mlx_init()))
 		rt_v1_exit(&env, "Failling to start mlx :/");
@@ -34,4 +56,6 @@ void	rt_mlx_init(t_env *env)
 		rt_v1_exit(&env, "Failling to get data :/");
 	env->img.bpp /= 8;
 	mlx_key_hook(env->win, key_hook, env);
+	mlx_expose_hook(env->win, expose_hook, env);
+	mlx_loop_hook(env->mlx, loop_hook, env);
 }

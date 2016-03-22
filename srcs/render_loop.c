@@ -29,6 +29,25 @@ static void	init_ray(t_env *env, t_pnt cur)
 	env->ray.dist = -1;
 }
 
+static void	img_clear(t_img *img, t_color col)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < img->hei)
+	{
+		x = 0;
+		while (x < img->wid)
+		{
+			img_pixel_put(img, x, y, col);
+			++x;
+		}
+		++y;
+	}
+
+}
+
 void		render_loop(t_env *env)
 {
 	t_pnt	cur;
@@ -41,6 +60,7 @@ void		render_loop(t_env *env)
 	h_coef = (double)P_HEI / (double)HEI;
 	init_pnt(env, &cur);
 	y = -1;
+	img_clear(&env->img, color_get(0, 0, 0, 0));
 	while (++y < HEI)
 	{
 		x = -1;
