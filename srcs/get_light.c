@@ -34,9 +34,9 @@ static int	light_pla(t_env *env)
 			angle = vec_dot(vn, vl);
 			if (angle > 0)
 			{
-				env->col.r += (env->cur->col.r * env->light->col.r * angle >= 255) ? 255 : (env->cur->col.r * env->light->col.r * angle);
-				env->col.g += (env->cur->col.g * env->light->col.g * angle >= 255) ? 255 : (env->cur->col.g * env->light->col.g * angle);
-				env->col.b += (env->cur->col.b * env->light->col.b * angle >= 255) ? 255 : (env->cur->col.b * env->light->col.b * angle);
+				env->col.r = (env->col.r + env->cur->col.r * env->light->col.r * angle >= 255) ? 255 : (env->col.r + env->cur->col.r * env->light->col.r * angle);
+				env->col.g = (env->col.g + env->cur->col.g * env->light->col.g * angle >= 255) ? 255 : (env->col.g + env->cur->col.g * env->light->col.g * angle);
+				env->col.b = (env->col.b + env->cur->col.b * env->light->col.b * angle >= 255) ? 255 : (env->col.b + env->cur->col.b * env->light->col.b * angle);
 			}
 		}
 		env->light = env->light->next;
@@ -67,9 +67,9 @@ static int	light_sph(t_env *env)
 			angle = vec_dot(vn, vl);
 			if (angle > 0)
 			{
-				env->col.r += (env->cur->col.r * env->light->col.r * angle >= 255) ? 255 : (env->cur->col.r * env->light->col.r * angle);
-				env->col.g += (env->cur->col.g * env->light->col.g * angle >= 255) ? 255 : (env->cur->col.g * env->light->col.g * angle);
-				env->col.b += (env->cur->col.b * env->light->col.b * angle >= 255) ? 255 : (env->cur->col.b * env->light->col.b * angle);
+				env->col.r = (env->col.r + env->cur->col.r * env->light->col.r * angle >= 255) ? 255 : (env->col.r + env->cur->col.r * env->light->col.r * angle);
+				env->col.g = (env->col.g + env->cur->col.g * env->light->col.g * angle >= 255) ? 255 : (env->col.g + env->cur->col.g * env->light->col.g * angle);
+				env->col.b = (env->col.b + env->cur->col.b * env->light->col.b * angle >= 255) ? 255 : (env->col.b + env->cur->col.b * env->light->col.b * angle);
 			}
 		}
 		env->light = env->light->next;
