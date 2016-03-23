@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 19:55:38 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/23 20:58:42 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct		s_env
 	char			ev_rotx;
 	char			ev_roty;
 	char			ev_rotz;
+	char			ev_mvx;
 	char			ev_mvy;
 }					t_env;
 
@@ -144,7 +145,8 @@ void				get_light(t_env *env);
 void				cam_rot_x(t_env * env, int dir);
 void				cam_rot_y(t_env * env, int dir);
 void				cam_rot_z(t_env * env, int dir);
+void				cam_mv_x(t_env *env, int dir);
 void				cam_mv_y(t_env *env, int dir);
-int				cam_moving(t_env *env);
+int					cam_moving(t_env *env);
 
 #endif

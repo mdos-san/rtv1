@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 04:36:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 19:44:46 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/23 21:00:20 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int		key_press(int keycode, t_env *env)
 {
-	(keycode == 119) ? (env->ev_mvy = 1) : 0;
-	(keycode == 115) ? (env->ev_mvy = -1) : 0;
-	(keycode == 65362) ? (env->ev_rotx = 1) : 0;
-	(keycode == 65364) ? (env->ev_rotx = -1) : 0;
-	(keycode == 113) ? (env->ev_roty = 1) : 0;
-	(keycode == 101) ? (env->ev_roty = -1) : 0;
-	(keycode == 65361) ? (env->ev_rotz = -1) : 0;
-	(keycode == 65363) ? (env->ev_rotz = 1) : 0;
+	(keycode == 0) ? (env->ev_mvx = -1) : 0;
+	(keycode == 2) ? (env->ev_mvx = 1) : 0;
+	(keycode == 119 || keycode == 13) ? (env->ev_mvy = 1) : 0;
+	(keycode == 115 || keycode == 1) ? (env->ev_mvy = -1) : 0;
+	(keycode == 65362 || keycode == 126) ? (env->ev_rotx = 1) : 0;
+	(keycode == 65364 || keycode == 125) ? (env->ev_rotx = -1) : 0;
+	(keycode == 113 || keycode == 12) ? (env->ev_roty = 1) : 0;
+	(keycode == 101 || keycode == 14) ? (env->ev_roty = -1) : 0;
+	(keycode == 65361 || keycode == 123) ? (env->ev_rotz = -1) : 0;
+	(keycode == 65363 || keycode == 124) ? (env->ev_rotz = 1) : 0;
 	return (1);
 }
 
@@ -30,14 +32,16 @@ int		key_hook(int keycode, t_env *env)
 	ft_putnbrl(keycode);
 	(keycode == 53 || keycode == 65307)
 	? rt_v1_exit(&env, "Program exited :3") : 0;
-	(keycode == 119) ? (env->ev_mvy = 0) : 0;
-	(keycode == 115) ? (env->ev_mvy = 0) : 0;
-	(keycode == 113) ? (env->ev_roty = 0) : 0;
-	(keycode == 101) ? (env->ev_roty = 0) : 0;
-	(keycode == 65361) ? (env->ev_rotz = 0) : 0;
-	(keycode == 65363) ? (env->ev_rotz = 0) : 0;
-	(keycode == 65362) ? (env->ev_rotx = 0) : 0;
-	(keycode == 65364) ? (env->ev_rotx = 0) : 0;
+	(keycode == 0) ? (env->ev_mvx = 0) : 0;
+	(keycode == 2) ? (env->ev_mvx = 0) : 0;
+	(keycode == 119 || keycode == 13) ? (env->ev_mvy = 0) : 0;
+	(keycode == 115 || keycode == 1) ? (env->ev_mvy = 0) : 0;
+	(keycode == 113 || keycode == 12) ? (env->ev_roty = 0) : 0;
+	(keycode == 101 || keycode == 14) ? (env->ev_roty = 0) : 0;
+	(keycode == 65361 || keycode == 123) ? (env->ev_rotz = 0) : 0;
+	(keycode == 65363 || keycode == 124) ? (env->ev_rotz = 0) : 0;
+	(keycode == 65362 || keycode == 126) ? (env->ev_rotx = 0) : 0;
+	(keycode == 65364 || keycode == 125) ? (env->ev_rotx = 0) : 0;
 	env->draw = 1;
 	return (1);
 }
@@ -51,6 +55,8 @@ int		expose_hook(t_env *env)
 
 int		loop_hook(t_env *env)
 {
+	(env->ev_mvx == 1) ? cam_mv_x(env, 1) : 0;
+	(env->ev_mvx == -1) ? cam_mv_x(env, -1) : 0;
 	(env->ev_mvy == 1) ? cam_mv_y(env, 1) : 0;
 	(env->ev_mvy == -1) ? cam_mv_y(env, -1) : 0;
 	(env->ev_rotx == 1) ? cam_rot_x(env, 1): 0;

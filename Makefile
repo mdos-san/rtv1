@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/21 18:27:55 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/23 20:56:47 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ TMP_C		=\
 			 cam_rot_x.c\
 			 cam_rot_y.c\
 			 cam_rot_z.c\
+			 cam_mv_x.c\
 			 cam_mv_y.c\
 			 cam_moving.c\
 			 main.c
