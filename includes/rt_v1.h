@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/23 20:58:42 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 02:04:10 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ typedef struct		s_obj
 	char			type;
 	t_pnt			o;
 	t_vec			v;
+	t_vec			vx;
+	t_vec			vy;
+	t_vec			vz;
 	double			size;
 	double			d;
 	t_color			col;
@@ -142,9 +145,9 @@ void				vec_norm(t_vec *v);
 double				vec_lenght(t_vec v);
 double				vec_dot(t_vec v1, t_vec v2);
 void				get_light(t_env *env);
-void				cam_rot_x(t_env * env, int dir);
-void				cam_rot_y(t_env * env, int dir);
-void				cam_rot_z(t_env * env, int dir);
+void				cam_rot_x(t_env *env, int dir);
+void				cam_rot_y(t_env *env, int dir);
+void				cam_rot_z(t_env *env, int dir);
 void				cam_mv_x(t_env *env, int dir);
 void				cam_mv_y(t_env *env, int dir);
 int					cam_moving(t_env *env);
