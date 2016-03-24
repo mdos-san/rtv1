@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/24 02:27:58 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 03:46:52 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ typedef struct		s_env
 	t_obj			*cur;
 	t_obj			*light;
 	int				i;
-	int				(*ft_ptr[2])(struct s_env *, t_obj);
+	int				(*ft_ptr[3])(struct s_env *, t_obj);
 	double			dist;
 	char			draw;
 	char			ev_rotx;
@@ -134,10 +134,12 @@ void				pnt_translate(t_pnt	*pnt, t_vec vec, double coef);
 void				render_loop(t_env *env);
 int					sphere_colision(t_env *env, t_obj sph);
 int					plane_colision(t_env *env, t_obj sph);
+int					cyl_colision(t_env *env, t_obj sph);
 void				check_colision(t_env *env);
 void				img_pixel_put(t_img *img, int x, int y, t_color col);
 void				init_sph(t_env *env, const char *line);
 void				init_pla(t_env *env, const char *line);
+void				init_cyl(t_env *env, const char *line);
 void				init_lum(t_env *env, const char *line);
 t_vec				vec_get(double x, double y, double z);
 void				vec_add(t_vec *v1, t_vec v2, double coef);

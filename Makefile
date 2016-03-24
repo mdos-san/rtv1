@@ -6,7 +6,7 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/06 17:24:47 by mdos-san          #+#    #+#              #
-#    Updated: 2016/03/24 02:31:38 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/03/24 03:20:47 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ TMP_C		=\
 			 check_colision.c\
 			 init_sph.c\
 			 init_pla.c\
+			 init_cyl.c\
 			 init_lum.c\
 			 vec_get.c\
 			 vec_add.c\

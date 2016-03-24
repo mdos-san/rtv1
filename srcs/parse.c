@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 01:00:11 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/24 02:37:19 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 03:40:42 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	get_name(t_env *env, const char *line)
 {
 	(ft_strncmp(line, "[sph]", 5) == 0) ? init_sph(env, line) : 0;
 	(ft_strncmp(line, "[pla]", 5) == 0) ? init_pla(env, line) : 0;
-	(ft_strncmp(line, "[cyl]", 5) == 0) ? (env->cur->type = CYL) : 0;
+	(ft_strncmp(line, "[cyl]", 5) == 0) ? init_cyl(env, line) : 0;
 	(ft_strncmp(line, "[con]", 5) == 0) ? (env->cur->type = CON) : 0;
 	(ft_strncmp(line, "[lum]", 5) == 0) ? init_lum(env, line) : 0;
 }
