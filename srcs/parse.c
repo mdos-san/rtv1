@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 01:00:11 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/24 03:40:42 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 07:41:29 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ int			parse(t_env *env)
 	{
 		if (line[0] != '#')
 		{
+			++env->nbr_obj;
 			if (obj_add(&env->obj) == -1)
 				rt_v1_exit(&env, "Failing sooooo sad :'/ !");
 			env->cur = (env->cur != NULL) ? env->cur->next : env->obj;
+			env->cur->id = env->nbr_obj;
 			read_cel(env, line);
 		}
 		(line) ? free(line) : 0;

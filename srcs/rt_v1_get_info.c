@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 00:43:27 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/24 02:31:04 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 07:42:59 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	chain_info(t_env *env)
 	while (env->cur)
 	{
 		ft_putendl("\n**********\n");
+		ft_putstr("ID: ");
+		ft_putnbrl(env->cur->id);
 		ft_putstr("Object type: ");
 		(env->cur->type == SPH) ? ft_putendl("Sphere") : 0;
 		(env->cur->type == PLA) ? ft_putendl("Plane") : 0;

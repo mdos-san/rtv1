@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 07:01:17 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/24 03:46:52 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 07:43:50 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct		s_cam
 
 typedef struct		s_obj
 {
+	int				id;
 	char			type;
 	t_pnt			o;
 	t_vec			v;
@@ -111,6 +112,7 @@ typedef struct		s_env
 	t_ray			ray;
 	t_obj			*obj;
 	t_obj			*cur;
+	t_obj			*shadow;
 	t_obj			*light;
 	int				i;
 	int				(*ft_ptr[3])(struct s_env *, t_obj);
@@ -121,6 +123,7 @@ typedef struct		s_env
 	char			ev_rotz;
 	char			ev_mvx;
 	char			ev_mvy;
+	int				nbr_obj;
 }					t_env;
 
 t_env				*rt_v1_init(char *file);
