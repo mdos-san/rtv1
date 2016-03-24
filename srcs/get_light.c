@@ -6,11 +6,48 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 16:59:41 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/21 20:28:26 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 09:11:24 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_v1.h"
+
+int		get_shadow(t_env *env)
+{
+	t_ray	r;
+	t_pnt	l;
+	t_pnt	i;
+	t_pnt	o;
+
+	if (cam_moving(env) == 0)
+	{
+		l = env->light->o;
+		o = env->ray.inter;
+	r = env->ray;
+	env->shadow = env->obj;
+	env->ray.o = r.inter;
+	env->ray.v = vec_get(env->light->o.x - r.inter.x, env->light->o.y - r.inter.y, env->light->o.z - r.inter.z);
+	vec_norm(&env->ray.v);
+	while (env->shadow)
+	{
+		if (env->shadow->type != PLA && env->shadow->type != LUM && env->shadow->id != env->cur->id
+				&& env->ft_ptr[(int)env->shadow->type](env, *env->shadow) && env->ray.dist > 0)
+		{
+			i.x = env->ray.o.x + env->ray.v.x * env->ray.dist;
+			i.y = env->ray.o.y + env->ray.v.y * env->ray.dist;
+			i.z = env->ray.o.z + env->ray.v.z * env->ray.dist;
+			if (sqrt(pow(o.x - l.x, 2) + pow(o.y - l.y, 2) + pow(o.z - l.z, 2)) > sqrt(pow(o.x - i.x, 2) + pow(o.y - i.y, 2) + pow(o.z - i.z, 2)))
+			{
+				env->ray = r;
+				return (1);
+			}
+		}
+		env->shadow = env->shadow->next;
+	}
+	env->ray = r;
+	}
+	return (0);
+}
 
 static int	light_pla(t_env *env)
 {
@@ -32,7 +69,7 @@ static int	light_pla(t_env *env)
 			vl = vec_get(pc.x - pi.x, pc.y - pi.y, pc.z - pi.z);
 			vec_norm(&vl);
 			angle = vec_dot(vn, vl);
-			if (angle > 0)
+			if (angle > 0 && get_shadow(env) == 0)
 			{
 				env->col.r = (env->col.r + env->cur->col.r * env->light->col.r * angle >= 255) ? 255 : (env->col.r + env->cur->col.r * env->light->col.r * angle);
 				env->col.g = (env->col.g + env->cur->col.g * env->light->col.g * angle >= 255) ? 255 : (env->col.g + env->cur->col.g * env->light->col.g * angle);
@@ -65,7 +102,7 @@ static int	light_sph(t_env *env)
 			vl = vec_get(pc.x - pi.x, pc.y - pi.y, pc.z - pi.z);
 			vec_norm(&vl);
 			angle = vec_dot(vn, vl);
-			if (angle > 0)
+			if (angle > 0 && get_shadow(env) == 0)
 			{
 				env->col.r = (env->col.r + env->cur->col.r * env->light->col.r * angle >= 255) ? 255 : (env->col.r + env->cur->col.r * env->light->col.r * angle);
 				env->col.g = (env->col.g + env->cur->col.g * env->light->col.g * angle >= 255) ? 255 : (env->col.g + env->cur->col.g * env->light->col.g * angle);
