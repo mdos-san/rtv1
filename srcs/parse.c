@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 01:00:11 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 18:59:30 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 02:54:55 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			parse(t_env *env)
 
 	line = NULL;
 	ret = 0;
-	if (!(env->fd = open(env->file, O_RDONLY)) > 0)
+	if (!((env->fd = open(env->file, O_RDONLY)) > 0))
 		rt_v1_exit(&env, "Can't open the file :'( !");
 	while ((ret = get_next_line(env->fd, &line)) > 0)
 	{
