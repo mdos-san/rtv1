@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 04:36:01 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/24 02:30:34 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/31 04:09:22 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int		key_hook(int keycode, t_env *env)
 
 int		expose_hook(t_env *env)
 {
-	render_loop(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img.ptr, 0, 0);
 	return (1);
 }
@@ -67,6 +66,7 @@ int		loop_hook(t_env *env)
 	(env->ev_rotz == 1) ? cam_rot_z(env, 1): 0;
 	if (env->draw != 0)
 	{
+		render_loop(env);
 		expose_hook(env);
 		env->draw = 0;
 	}

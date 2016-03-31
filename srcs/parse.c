@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 01:00:11 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/24 07:41:29 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/24 09:59:37 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int			parse(t_env *env)
 			env->cur = (env->cur != NULL) ? env->cur->next : env->obj;
 			env->cur->id = env->nbr_obj;
 			read_cel(env, line);
+			if (env->cur->type == -1)
+				rt_v1_exit(&env, "Bad shape detected!");
 		}
 		(line) ? free(line) : 0;
 	}

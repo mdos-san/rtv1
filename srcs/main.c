@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 06:54:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/20 20:08:33 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/03/31 04:08:03 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	main(int ac, char **av)
 		(parse(env) == 1) ? 0 : rt_v1_exit(&env, "Error in parsing :'( !");
 		rt_v1_get_info(env);
 		rt_mlx_init(env);
-		render_loop(env);
-		mlx_put_image_to_window(env->mlx, env->win, env->img.ptr, 0, 0);
 		mlx_loop(env->mlx);
 		rt_v1_exit(&env, "Exiting, Good Bye <3 !");
 	}
