@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 08:31:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/03/24 08:00:57 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/04/25 12:19:48 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,51 +55,28 @@ int			plane_colision(t_env *env, t_obj pla)
 		return (0);
 }
 
-/*
-** x = o.x + v.x * t
-** y = o.y + v.y * t
-** z = o.z + v.z * t
-** 
-** 
-** eq cyl basic
-**
-**	x^2 + y^2 = r^2
-**
-**	(o.x + v.x * t)^2 + (o.y + v.y * t)^2 - r^2 = 0
-**	o.x^2 + 2 * v.x * t + v.x^2 * t^2 + o.y^2 + 2 * v.y * t + v.y^2 * t^2 - r^2 = 0
-**  t^2 * (vx^2 + v.y^2) +
-**
-**
-*/
-
-
 int			cyl_colision(t_env *env, t_obj cyl)
 {
-	t_pnt	o;
-	t_vec	v;
-	double	r;
-	double	det;
 	double	a;
 	double	b;
 	double	c;
+	double	det;
+	t_vec	x;
 
-	o = env->ray.o;
-	v = env->ray.v;
-	r = 10;
-	a = pow(v.x, 2) + pow(v.y, 2);
-	b = 2 * o.x * v.x + 2 * o.y * v.y;
-	c = o.x * o.x + o.y * o.y - r * r;
+	x = vec_get(env->ray.o.x - cyl.o.x, env->ray.o.y - cyl.o.y, env->ray.o.z - cyl.o.z);
+	a = vec_dot(env->ray.v, env->ray.v) - pow(vec_dot(env->ray.v, cyl.v), 2);
+	b = (vec_dot(env->ray.v, x) - vec_dot(env->ray.v, cyl.v) * vec_dot(x, cyl.v)) * 2;
+	c = vec_dot(x, x) - pow(vec_dot(x, cyl.v), 2) - cyl.size * cyl.size;
 	det = b * b - 4 * a * c;
 	if (det >= 0)
 	{
 		env->ray.dist =
-			((-b + sqrt(det)) / (2 * a) > (-b - sqrt(det)) / (2 * a)) ?
+			((-b + sqrt(det)) / (2 * a) < (-b - sqrt(det)) / (2 * a)) ?
 			(-b + sqrt(det)) / (2 * a) : (-b - sqrt(det)) / (2 * a);
 		return (1);
 	}
 	else
 		return (0);
-	(void)cyl;
 }
 
 static void	new_pnt(t_env *env)
